@@ -1,0 +1,20 @@
+Pipeline{
+ agent any
+ triggerSCM(* * * * *)
+ stages{
+    stage("Git Check out"){
+     "git credential "credentialid",${credentailPassword}"
+    }   
+    stage("Test"){
+     ./gradlew test
+    }
+    stage("build"){
+     ./gradlew bootJar
+    }
+    
+    stage("docker build image"){
+      ssh docker build -t 
+    }
+    
+ }
+}
